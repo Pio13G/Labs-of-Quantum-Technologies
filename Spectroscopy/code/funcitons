@@ -1,0 +1,16 @@
+
+## read R file
+df = pd.read_csv('data/R.csv', header=11, index_col=False)
+
+print(df.axes[1])
+nr = np.arange(df.loc[0, "Second"], df.loc[13999, "Second"], 0.0001)
+interp = np.interp(nr, df["Second"], df["Volt"])
+
+prova = df.loc[0:4, "Volt.1"]
+prova = concat([prova, df.loc[4:8, "Volt.1"]], axis=0)
+print(prova)
+
+plt.plot(nr, interp)
+plt.xlim(df.loc[0, "Second"], df.loc[13999, "Second"])
+plt.ylim(-5, 5)
+plt.show()
