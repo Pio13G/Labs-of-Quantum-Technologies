@@ -28,12 +28,10 @@ ramp = np.interp(nr, xmasked, ymasked)
 
 linsig = df.loc[rstart:rstop, "Volt.1"] - ramp
 
-
-
 # plt.plot(nr, ramp, 'b+')
-plt.plot(nr, df.loc[rstart:rstop, "Volt.1"])
+# plt.plot(nr, df.loc[rstart:rstop, "Volt.1"])
 plt.plot(nr, linsig)
-# plt.xlim(df.loc[0, "Second"], df.loc[len(df["Second"]) - 1, "Second"])
+
 plt.xlim(df.loc[rstart, "Second"], df.loc[rstop, "Second"])
 plt.ylim(-yrang, yrang)
 # plt.show()
@@ -49,7 +47,8 @@ popt, pcov = curve_fit(gaus,x,y,p0=[1,mean,sigma])
 
 # plt.plot(x,y,'b+:',label='data')
 plt.plot(x,gaus(x,*popt),'ro:',label='fit')
-
+print("Values for gaussian:")
+print(popt)
 
 # #### D1 second peak ####
 x = df.loc[2600:2900,"Second"]

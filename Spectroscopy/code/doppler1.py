@@ -23,29 +23,34 @@ ymasked = concat([df.loc[0:400,"Volt.1"], df.loc[1000:2300,"Volt.1"], df.loc[310
 nr = df.loc[0:3500, "Second"]
 ramp = np.interp(nr, xmasked, ymasked)
 
+# ramp of the oscilloscope minus the inerpoled line
 linsig = df.loc[0:3500, "Volt.1"] - ramp
 
 
 
-# plt.plot(nr, ramp, 'b+')
-plt.plot(nr, df.loc[0:3500, "Volt.1"])
-plt.plot(nr, linsig)
-# plt.xlim(df.loc[0, "Second"], df.loc[len(df["Second"]) - 1, "Second"])
+# plt.plot(nr, ramp, 'b+')                      #fit line
+# plt.plot(nr, df.loc[0:3500, "Volt.1"])        #original function
+plt.plot(nr, linsig)                            #linearized function
+
 plt.xlim(df.loc[0, "Second"], df.loc[3500, "Second"])
 plt.ylim(-0.3, 0.3)
 # plt.show()
 
 #### D1 first peak ####
-x = df.loc[400:700,"Second"]
+x = df.loc[400:700,"Second"]        # select the range for the gaussian
 y = linsig.loc[400:700]
 
 mean = sum(x*y)/sum(y)                   
 sigma = np.sqrt(sum(y*(x-mean)**2)/sum(y))    
 
+#fit the gaussian
 popt, pcov = curve_fit(gaus,x,y,p0=[1,mean,sigma])
 
+# add to plot
 plt.plot(x,y,'b+:',label='data')
 plt.plot(x,gaus(x,*popt),'ro:',label='fit')
+print("Values for gaussian:")
+print(popt)
 
 #### D1 second peak ####
 x = df.loc[700:1000,"Second"]
@@ -90,3 +95,19 @@ plt.plot(x,gaus(x,*popt),'ro:',label='fit')
 plt.xlabel('Time (s)')
 plt.ylabel('Voltage (V)')
 plt.show()
+
+### using DC signal 
+
+#find the ramp interpolation 
+xmasked = concat([df.loc[0:400,"Second"], df.loc[1000:2300,"Second"], df.loc[3100:3500, "Second"]], axis=0)       #xrange
+ymasked = concat([df.loc[0:400,"Volt.2"], df.loc[1000:2300,"Volt.2"], df.loc[3100:3500, "Volt.2"]], axis=0)       #yrange
+nr = df.loc[0:3500, "Second"]
+ramp = np.interp(nr, xmasked, ymasked)
+
+# Compute T = I/I0
+T = df.loc[0:3500, "Volt.2"] / ramp
+
+plt.plot(df.loc[0:3500, "Second"], np.emath.log(T))
+plt.show()
+
+#trovare i due dip usare funzione per capire se lineare o meno e sostituire tempo con secondi
