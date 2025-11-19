@@ -1,0 +1,78 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% This will help you in writing your homebook
+% Remember that the character % is a comment in latex
+
+% Divide the work you have done in each of the chapters used 
+% during the lab lessons in a new chapter, as in the example below, 
+% using a coherent title 
+
+
+% For each chapter you can include :
+
+%-----------------------------
+% VHDL file, using the sintax:
+
+
+	%\begin{listato}
+	%\lstinputlisting{./exeMPLE/listato1.vhd}
+	%\end{listato}
+
+% the path to the file must be correct, obviously
+% Should you have listings written in other languages the method is the 
+% same, but the language set up must be changed using a different 
+% setting for the command \lstset{language=VHDL} in file homebook.tex 
+
+
+%-----------------------------
+% figures in postcript (ps) or encapsulated postcript (eps)
+% format, using the syntax:
+
+%	\begin{figure}[h]
+%	\centering
+%	\includegraphics[width=9cm]{./cap1/figure1.eps}
+%	\caption{Put a caption if you want (didascalia...:)))}
+%	\label{put-a-label-for-referring-to-this-picture}	
+%	\end{figure}
+
+% the path to the file must be correct, obviously
+% you can refer to this picture in any point of your document
+% by typing the instruction:
+
+% 	\ref{put-a-label-for-referring-to-this-picture}
+
+% that is using the same label you put in the fiure label
+% when you will run the "latex command" an automatic reference to
+% this figure with the correct enumeration will be inserted
+
+
+%-----------------------
+% comment in text format (if you are not skilled in latex and don't want to be)
+% using the sintax:
+
+	%\begin{verbatim}
+	% blablabla 
+	%\end{verbatim}
+
+% The verbatimg includes text as it is, as you could write in a normal text file 
+
+% (BETTER) If uou want to write enhancing all the latex possibilities you 
+% should add to you text a few commands in some particular cases. 
+% In the following you have and example of a few chapters roughtly commented
+% and written all in this file: remember that you can saparate
+% each chapter in different files (this is always what a latex pro does) 
+% and include them using the instruction: \input{./directoryxx/fileyy.tex}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Beginning of latex commands
+% You can copy this in a new file (e.g. cap1/cap1.tex) and inlcude it here
+% using the command : \input{./cap1/cap1.tex}
+
+
+% chapter 1
+\chapter{Atomic Spettroscopy}
+
+\section{Introduction}
