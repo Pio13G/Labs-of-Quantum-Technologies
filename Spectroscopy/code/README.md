@@ -1,6 +1,6 @@
 ## Scripts
 
-This file contains a brief recap on the use of the files inside this folder
+This file contains a brief recap about the usage of files inside this folder
 
 |   File        | Description |
 |---------------|-------------|
